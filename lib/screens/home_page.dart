@@ -201,7 +201,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // === scrobale movies ===
+            // === scrobale Box office movies ===
             Row(
               children: [
                 const Padding(

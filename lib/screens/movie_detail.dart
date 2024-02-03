@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:cinema_schedule_/screens/seat_selection.dart';
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cinema_schedule_/widgets/nowShowing.dart';
@@ -35,17 +37,17 @@ class _DetailState extends State<Detail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff1B1E25),
+      // backgroundColor: const Color(0xff1B1E25),
       appBar: AppBar(
-        backgroundColor: const Color(0xff1B1E25),
-        foregroundColor: Colors.white,
+        // backgroundColor: const Color(0xff1B1E25),
+        // foregroundColor: Colors.white,
         title: const Center(
           child: Padding(
             padding: EdgeInsets.only(left: 0),
             child: Text(
               'Movie Detail',
               style: TextStyle(
-                  color: Colors.white,
+                  // color: Colors.white,
                   fontSize: 20,
                   fontFamily: 'Poppins-SemiBold'),
             ),
@@ -55,9 +57,9 @@ class _DetailState extends State<Detail> {
           IconButton(
             onPressed: () {},
             icon: const Icon(
-              Icons.bookmark_border,
+              FluentSystemIcons.ic_fluent_bookmark_regular,
               size: 30,
-              color: Colors.white,
+              // color: Colors.white,
             ),
           ),
         ],
@@ -109,7 +111,7 @@ class _DetailState extends State<Detail> {
             child: Text(
               widget.title, // << Title goes here
               style: TextStyle(
-                color: Colors.white,
+                // color: Colors.white,
                 fontFamily: 'Poppins-Medium',
                 fontSize: 20,
               ),
@@ -156,14 +158,18 @@ class _DetailState extends State<Detail> {
                   height: 30,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: const Color(0xff252932)),
+                      color: AdaptiveTheme.of(context).mode.isDark
+                          ? const Color(0xff252932)
+                          : Color(0xff54A8E5)),
                   child: Center(
                     child: Text(
                       category,
-                      style: const TextStyle(
+                      style: TextStyle(
                           fontFamily: 'Poppins-Medium',
                           fontSize: 12,
-                          color: Color(0xffB2B5BB)),
+                          color: AdaptiveTheme.of(context).mode.isDark
+                              ? Color(0xffB2B5BB)
+                              : Colors.white),
                     ),
                   ),
                 );
@@ -175,7 +181,7 @@ class _DetailState extends State<Detail> {
             child: Text(
               'Synopsis', // << Title goes here
               style: TextStyle(
-                color: Colors.white,
+                // color: Colors.white,
                 fontFamily: 'Poppins-Medium',
                 fontSize: 18,
               ),

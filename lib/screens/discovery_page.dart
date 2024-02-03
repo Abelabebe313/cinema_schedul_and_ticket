@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:cinema_schedule_/widgets/nowShowing.dart';
 import 'package:cinema_schedule_/widgets/upcoming.dart';
 import 'package:flutter/material.dart';
@@ -18,16 +19,16 @@ class _DiscoveryState extends State<Discovery> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff1B1E25),
+      // backgroundColor: const Color(0xff1B1E25),
       appBar: AppBar(
-        backgroundColor: const Color(0xff1B1E25),
+        // backgroundColor: const Color(0xff1B1E25),
         title: const Center(
           child: Padding(
             padding: EdgeInsets.only(left: 50),
             child: Text(
               'Explore Movie',
               style: TextStyle(
-                  color: Colors.white,
+                  // color: Colors.white,
                   fontSize: 20,
                   fontFamily: 'Poppins-SemiBold'),
             ),
@@ -39,7 +40,7 @@ class _DiscoveryState extends State<Discovery> {
             icon: const Icon(
               Icons.search,
               size: 30,
-              color: Colors.white,
+              // color: Colors.white,
             ),
           ),
         ],
@@ -52,7 +53,7 @@ class _DiscoveryState extends State<Discovery> {
               height: 64,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: const Color(0xff32363D),
+                color: AdaptiveTheme.of(context).mode.isDark ? const Color(0xff32363D) : Color.fromARGB(255, 241, 237, 237),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

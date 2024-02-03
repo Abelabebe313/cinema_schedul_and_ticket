@@ -1,6 +1,10 @@
 import 'package:cinema_schedule_/screens/payment_page.dart';
+import 'package:cinema_schedule_/screens/ticket_result.dart';
+import 'package:cinema_schedule_/services/chappa.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:book_my_seat/book_my_seat.dart';
+import 'package:chapasdk/chapasdk.dart';
 
 class SeatSelection extends StatefulWidget {
   const SeatSelection({super.key});
@@ -12,6 +16,8 @@ class SeatSelection extends StatefulWidget {
 class _SeatSelectionState extends State<SeatSelection> {
   DateTime? _selectedDate;
   TimeOfDay? _selectedTime;
+  ChappaPayment chappaPayment = ChappaPayment();
+
   TextEditingController _dateController = TextEditingController();
   TextEditingController _timeController = TextEditingController();
 
@@ -49,16 +55,16 @@ class _SeatSelectionState extends State<SeatSelection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff1B1E25),
       appBar: AppBar(
-        backgroundColor: const Color(0xff1B1E25),
-        foregroundColor: Colors.white,
-        title: Text(
-          'Select Seats',
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontFamily: 'Poppins-SemiBold'),
+        title: const Padding(
+          padding: EdgeInsets.only(left: 60),
+          child: Text(
+            'Select Seats',
+            style: TextStyle(
+                // color: Colors.white,
+                fontSize: 20,
+                fontFamily: 'Poppins-SemiBold'),
+          ),
         ),
       ),
       body: Column(
@@ -142,8 +148,12 @@ class _SeatSelectionState extends State<SeatSelection> {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: seatState == SeatState.selected
-                          ? Text("Selected Seat[$rowI][$colI]",style: const TextStyle(fontFamily: 'Poppins-Light'))
-                          : Text("De-selected Seat[$rowI][$colI]",style:const TextStyle(fontFamily: 'Poppins-Light')),
+                          ? Text("Selected Seat[$rowI][$colI]",
+                              style:
+                                  const TextStyle(fontFamily: 'Poppins-Light'))
+                          : Text("De-selected Seat[$rowI][$colI]",
+                              style:
+                                  const TextStyle(fontFamily: 'Poppins-Light')),
                     ),
                   );
                   if (seatState == SeatState.selected) {
@@ -165,7 +175,7 @@ class _SeatSelectionState extends State<SeatSelection> {
                       SeatState.disabled,
                       SeatState.unselected,
                       SeatState.unselected,
-                      SeatState.unselected,  // gap
+                      SeatState.unselected, // gap
                       SeatState.unselected,
                       SeatState.unselected,
                       SeatState.disabled,
@@ -174,7 +184,7 @@ class _SeatSelectionState extends State<SeatSelection> {
                       SeatState.unselected,
                       SeatState.unselected,
                       SeatState.unselected,
-                      SeatState.unselected,  // gap
+                      SeatState.unselected, // gap
                       SeatState.unselected,
                       SeatState.unselected,
                       SeatState.unselected,
@@ -183,7 +193,7 @@ class _SeatSelectionState extends State<SeatSelection> {
                       SeatState.unselected,
                       SeatState.unselected,
                       SeatState.unselected,
-                      SeatState.unselected,  // gap
+                      SeatState.unselected, // gap
                       SeatState.unselected,
                       SeatState.unselected,
                       SeatState.unselected,
@@ -192,7 +202,7 @@ class _SeatSelectionState extends State<SeatSelection> {
                       SeatState.disabled,
                       SeatState.disabled,
                       SeatState.disabled,
-                      SeatState.disabled,  // gap
+                      SeatState.disabled, // gap
                       SeatState.disabled,
                       SeatState.disabled,
                       SeatState.disabled,
@@ -201,7 +211,7 @@ class _SeatSelectionState extends State<SeatSelection> {
                       SeatState.sold,
                       SeatState.sold,
                       SeatState.unselected,
-                      SeatState.unselected,  // gap
+                      SeatState.unselected, // gap
                       SeatState.sold,
                       SeatState.sold,
                       SeatState.unselected,
@@ -210,7 +220,7 @@ class _SeatSelectionState extends State<SeatSelection> {
                       SeatState.sold,
                       SeatState.sold,
                       SeatState.unselected,
-                      SeatState.unselected,  // gap
+                      SeatState.unselected, // gap
                       SeatState.sold,
                       SeatState.sold,
                       SeatState.unselected,
@@ -219,7 +229,7 @@ class _SeatSelectionState extends State<SeatSelection> {
                       SeatState.sold,
                       SeatState.sold,
                       SeatState.unselected,
-                      SeatState.unselected,  // gap
+                      SeatState.unselected, // gap
                       SeatState.sold,
                       SeatState.sold,
                       SeatState.unselected,
@@ -228,7 +238,7 @@ class _SeatSelectionState extends State<SeatSelection> {
                       SeatState.disabled,
                       SeatState.unselected,
                       SeatState.unselected,
-                      SeatState.unselected,  // gap
+                      SeatState.unselected, // gap
                       SeatState.unselected,
                       SeatState.unselected,
                       SeatState.disabled,
@@ -298,17 +308,34 @@ class _SeatSelectionState extends State<SeatSelection> {
           Center(
             child: ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PaymentPage(),
-                  ),
+                // chappaPayment.pay(context);
+                Chapa.paymentParameters(
+                  context: context, // context
+                  publicKey: 'Bearer CHASECK_TEST-dr287iJp6CxPYu5SsRDYP7toefyBPdGY',
+                  currency: 'etb',
+                  amount: '300',
+                  email: 'abelabebe313@gmail.com',
+                  phone: '917914528',
+                  firstName: 'Abel',
+                  lastName: 'Abebe',
+                  txRef: 'fwoenfonwofn77',
+                  title: 'title',
+                  desc: 'desc',
+                  namedRouteFallBack: '/ticketPrint', // fall back route name
                 );
+
+                print('checkout pressed');
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => Ticket(),
+                //   ),
+                // );
               },
               style: ElevatedButton.styleFrom(
-                fixedSize: Size(315, 57), // Set the width and height
-                primary: Color(0xff54A8E5), // Background color
-                onPrimary: Colors.white, // Text color
+                fixedSize: Size(315, 57),
+                backgroundColor: Color(0xff54A8E5),
+                foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12), // Border radius
                 ),
@@ -321,7 +348,7 @@ class _SeatSelectionState extends State<SeatSelection> {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

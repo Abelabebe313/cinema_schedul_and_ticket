@@ -1,7 +1,9 @@
 import 'package:cinema_schedule_/screens/discovery_page.dart';
 import 'package:cinema_schedule_/screens/home_page.dart';
+import 'package:cinema_schedule_/screens/settings_page.dart';
+import 'package:cinema_schedule_/screens/tickets_page.dart';
 import 'package:flutter/material.dart';
-import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
+import 'package:fluentui_icons/fluentui_icons.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);
@@ -15,8 +17,8 @@ class _BottomBarState extends State<BottomBar> {
   static final List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     Discovery(),
-    Text('Ticket'),
-    Text('Profile')
+    TicketsPage(),
+    Settings()
   ];
 
   void _onItemTapped(int index) {
@@ -36,23 +38,32 @@ class _BottomBarState extends State<BottomBar> {
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: const Color(0xff1B1E25),
+          // backgroundColor: const Color(0xff1B1E25),
           selectedItemColor: const Color(0xff54A8E5),
           unselectedItemColor: const Color(0xff636882),
           showUnselectedLabels: true,
           selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
           unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-          elevation: 0,
+          elevation: 10,
           items: const [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined), label: 'Home'),
+              icon: Icon(FluentSystemIcons.ic_fluent_home_regular),
+              activeIcon: Icon(FluentSystemIcons.ic_fluent_home_filled),
+              label: 'Home',
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.explore_outlined), label: 'Discover'),
+                icon: Icon(FluentSystemIcons.ic_fluent_earth_regular),
+                activeIcon: Icon(FluentSystemIcons.ic_fluent_earth_filled),
+                label: 'Discovery',),
             BottomNavigationBarItem(
-                icon: Icon(Icons.movie_outlined), label: 'Ticket'),
+                icon: Icon(FluentSystemIcons.ic_fluent_ticket_regular),
+                activeIcon: Icon(FluentSystemIcons.ic_fluent_ticket_filled),
+                label: 'Ticket',),
             BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline), label: 'Profile'),
+                icon: Icon(FluentSystemIcons.ic_fluent_person_regular),
+                activeIcon: Icon(FluentSystemIcons.ic_fluent_person_filled),
+                label: 'Profile',),
           ],
-        ));
+        ),);
   }
 }

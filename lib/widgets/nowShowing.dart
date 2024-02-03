@@ -1,4 +1,4 @@
-import 'package:cinema_schedule_/screens/movie_detail.dart';
+import 'package:cinema_schedule_/screens/detail_page.dart';
 import 'package:flutter/material.dart';
 
 class NowShowing extends StatefulWidget {
@@ -62,7 +62,7 @@ class _NowShowingState extends State<NowShowing> {
           child: Text(
             'Todays Movies',
             style: TextStyle(
-                color: Colors.white,
+                // color: Colors.white,
                 fontSize: 20,
                 fontFamily: 'Poppins-SemiBold'),
           ),
@@ -87,7 +87,7 @@ class _NowShowingState extends State<NowShowing> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Detail(
+                            builder: (context) => DetailPage(
                                   image: Todays_Movies[index]['image'],
                                   title: Todays_Movies[index]['title'],
                                   description: Todays_Movies[index]
@@ -123,9 +123,10 @@ class _NowShowingState extends State<NowShowing> {
                           Text(
                             '${Todays_Movies[index]['title']}',
                             style: const TextStyle(
-                                fontFamily: 'Poppins-SemiBold',
-                                fontSize: 20,
-                                color: Colors.white),
+                              fontFamily: 'Poppins-SemiBold',
+                              fontSize: 20,
+                              // color: Colors.white,
+                            ),
                           ),
                           Row(
                             children: [

@@ -17,6 +17,20 @@ dependencies:
   cupertino_icons: ^1.0.2
   molten_navigationbar_flutter: ^1.0.1
   book_my_seat: ^1.0.1
+  ticket_widget: ^1.0.2
+  barcode: ^2.2.4
+  barcode_widget: ^2.0.4
+  fluentui_icons: ^1.0.0
+  adaptive_theme: ^3.4.1
+  easy_localization: ^3.0.3
+  chapasdk: ^0.0.6
+  http: ^0.13.6
+  flutter_launcher_icons: ^0.13.1
+  
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo.png"
 
 dev_dependencies:
   flutter_test:
@@ -34,9 +48,9 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    - assets/images/boa.jpg
-    - assets/images/cbe.jpg
+    - assets/images/logo.png
     - assets/images/movies/
+    - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
